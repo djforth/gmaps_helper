@@ -1,4 +1,4 @@
-const _ = require('lodash');
+
 /**
 * Google Maps path module.
 * @module create_gmaps_path
