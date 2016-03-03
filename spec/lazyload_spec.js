@@ -1,6 +1,6 @@
 const _        = require("lodash");
 
-const LazyLoad = require("../src/Lazyload");
+const LazyLoad = require("../src/lazyload");
 
 const checkCalls = require("@djforth/morse-jasmine/check_calls")
   , createEl = require("@djforth/morse-jasmine/create_elements").createHolder
