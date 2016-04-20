@@ -40,7 +40,7 @@ function centerMap(map, markers, LatLngBounds){
 
 function setZoom(map, zoom, event){
   var listener = event.addListener(map, 'idle', function(){
-    if (this.getZoom() > zoom){
+    if (this.getZoom() !== zoom){
       this.setZoom(zoom);
     }
     event.removeListener(listener);
