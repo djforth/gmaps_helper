@@ -36,6 +36,11 @@ function centerMap(map, markers, LatLngBounds){
   return this.obj;
 }
 
+function setPosition(map, LatLng, lat, lng){
+  let pos = LatLng({lat: lat, lng: lng});
+  map.setCenter(pos);
+}
+
 function setZoom(map, zoom, event){
   // this.obj = this.obj || {}
   var listener = event.addListener(map, 'idle', function(){
@@ -60,6 +65,10 @@ module.exports = function(el){
     markers = creator(options.get('pins'), create);
     var obj = {
       getMap: ()=>map
+      , setPosition: (LatLng)=>{
+        let pos = LatLng({lat: options.get('lat'), lng: options.get('lng')});
+        map.setCenter(pos);
+      }
     };
 
     obj.centerMap = partial(bind(centerMap, {obj: obj}), map, markers);

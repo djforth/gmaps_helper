@@ -9,10 +9,11 @@ const createPath    = require('./create_gmaps_path')
     , mapLoader     = require('./maploader');
 
 function creator(map, options){
+  let m;
   return function(cb){
     options.addType().addCenter();
-    let m = map(google.maps.Map, options);
-    if (options.get('centermap')){
+    m = map(google.maps.Map, options);
+    if (options.get('boundmap')){
       m.centerMap(google.maps.LatLngBounds);
     }
 
@@ -106,6 +107,10 @@ module.exports = function(id, key){
           .addPlugins(options.get('libraries'))
           .load();
       }
+    }
+
+    , setBounds: ()=>{
+      options.update({boundmap: true});
     }
 
     , setZoom: (z)=>{

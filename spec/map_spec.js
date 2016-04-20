@@ -28,7 +28,7 @@ describe('map', function() {
       , LatLngBounds : spyManager.getSpy("LatLngBounds")
       }
 
-      stub_chain.addConstructor("options", ["addType", "addCenter"])
+      stub_chain.addConstructor("options", ["addType", "addCenter", 'get'])
       stub_chain.addConstructor("map", ["centerMap", "setZoom", "getMap"])
       spyManager.addSpy("callback")
       creator = getMod("creator")(stub_chain.getConstructor("map"), stub_chain.getConstructor("options")())
@@ -109,7 +109,7 @@ describe('map', function() {
         describe('addCallback', function() {
           beforeEach(function () {
             stubs.addSpy("partial");
-            stubs.getSpy("partial").and.returnValue("cb")
+            stubs.getSpy("partial").and.returnValue("cb");
           });
 
           it('should set callback', function() {
@@ -183,7 +183,7 @@ describe('map', function() {
               map.addCenter(1, 2);
               return stub_chain.getMethod("options", "update")
             }
-            , [{lat:1,lng:2}]
+            , [{lat:1,lng:2, centermap:true}]
           ]
           , "addConfig":[()=>{
               map.addConfig({foo:"bar"});

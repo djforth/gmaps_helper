@@ -8,6 +8,7 @@ module.exports = function(dataset){
 
   let opts = _.defaults(data, {
     autozoom: false
+    , boundmap: false
     , centermap: false
     , draggable: true
     , optimized: false
