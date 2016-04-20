@@ -11,9 +11,15 @@ const createPath    = require('./create_gmaps_path')
 function creator(map, options){
   return function(cb){
     options.addType().addCenter();
-    let m = map(google.maps.Map, options)
-        .centerMap(google.maps.LatLngBounds)
-        .setZoom(google.maps.event);
+    let m = map(google.maps.Map, options);
+    if (options.get('centermap')){
+      m.centerMap(google.maps.LatLngBounds);
+    }
+
+    if (options.get('autozoom')){
+      m.setZoom(google.maps.event);
+    }
+
     if (_.isFunction(cb)) cb(m.getMap());
   };
 }
@@ -39,7 +45,7 @@ module.exports = function(id, key){
 
   if (!isElement(el)) return;
 
-  gpath  = createPath(key);
+  gpath      = createPath(key);
   options    = getOptions(el.dataset.map);
   map        = mapCreator(el);
   window.mapLoaded = creator(map, options);
@@ -56,7 +62,7 @@ module.exports = function(id, key){
     * param {integer} lng - longitude
     */
     , addCenter: (lat, lng)=>{
-      options.update({lat: lat, lng: lng});
+      options.update({lat: lat, lng: lng, centermap: true});
     }
     /** Add gmaps config
     * param {object} config object
@@ -100,6 +106,10 @@ module.exports = function(id, key){
           .addPlugins(options.get('libraries'))
           .load();
       }
+    }
+
+    , setZoom: (z)=>{
+      options.update({zoom: z, autozoom: true});
     }
   };
 

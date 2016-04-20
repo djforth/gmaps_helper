@@ -15,7 +15,7 @@ function makeMarker(createMarker, closer){
 }
 
 function creator(markers, create){
-  if(_.isArray(markers)){
+  if (_.isArray(markers)){
     markers = _.map(markers, (mk)=>{
       return create(mk);
     });
@@ -38,8 +38,8 @@ function centerMap(map, markers, LatLngBounds){
 
 function setZoom(map, zoom, event){
   // this.obj = this.obj || {}
-  var listener = event.addListener(map, 'idle', function() {
-    if(this.getZoom() > zoom){
+  var listener = event.addListener(map, 'idle', function(){
+    if (this.getZoom() > zoom){
       this.setZoom(zoom);
     }
     event.removeListener(listener);
