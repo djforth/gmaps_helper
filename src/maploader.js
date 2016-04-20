@@ -11,9 +11,9 @@ function createScript(path, id){
 
 /** Plugin loader */
 function loadPlugins(plugins){
-  if(_.isArray(plugins) && !_.isEmpty(plugins)){
+  if (_.isArray(plugins) && !_.isEmpty(plugins)){
     _.forEach(plugins, (p, i)=>{
-      if(!_.isUndefined(p)){
+      if (!_.isUndefined(p)){
         document.body.appendChild(createScript(p, `plugin${i}`));
       }
     });
@@ -35,7 +35,7 @@ module.exports = function(path){
   var obj = {
     /** Add plugins */
     addPlugins: (p)=>{
-      if(_.isArray(p)){
+      if (_.isArray(p)){
         plugins = plugins.concat(p);
       } else if(_.isString(p)) {
         plugins.push(p);

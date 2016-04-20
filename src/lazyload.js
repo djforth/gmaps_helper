@@ -26,13 +26,13 @@ function removeLoader(el){
 */
 
 module.exports = function(el, event, callback){
-  if(!isElement(el)) return;
+  if (!isElement(el)) return;
 
   var loader = partial(removeLoader, el);
   function eventAction(e){
     e.preventDefault();
     addLoader(el);
-    if (isFunction(callback)) {
+    if (isFunction(callback)){
       callback(loader);
     }
     el.removeEventListener(event, eventAction, false);

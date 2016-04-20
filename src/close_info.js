@@ -10,14 +10,14 @@ const _ = require('lodash/core');
 * @return {object} of functions to build path
 */
 
-module.exports = function closeInfo(map) {
+module.exports = function closeInfo(map){
   let markers = [];
   return {
     /** Add markers to list
     * @param {array} or Object m - marker array or Object
     */
     addMarkers: (m)=>{
-      if (_.isArray(m)) {
+      if (_.isArray(m)){
         markers = markers.concat(m);
         return;
       }
@@ -27,7 +27,7 @@ module.exports = function closeInfo(map) {
     /** Close all windows */
     , closeAllWindows: ()=>{
       _.forEach(markers, (mk)=>{
-        if (_.has(mk, 'info') && _.has(mk, 'marker')) {
+        if (_.has(mk, 'info') && _.has(mk, 'marker')){
           mk.info.close(map, mk.marker);
         }
       });

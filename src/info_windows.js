@@ -1,5 +1,6 @@
 const _ = require('lodash/core');
 
+/* global InfoBubble google */
 function createInfoBubble(map, info, opts){
   let options = _.defaults(opts, {
     shadowStyle: 0

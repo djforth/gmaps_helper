@@ -1,5 +1,5 @@
 var _ = require('lodash/core');
-
+/* global google InfoBubble */
 function addClose(map, id){
   return function(marker, infowindow){
     let elem = document.getElementById(`pin-${id}`);

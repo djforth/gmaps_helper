@@ -8,6 +8,8 @@ const createPath    = require('./create_gmaps_path')
     , mapCreator    = require('./create_map')
     , mapLoader     = require('./maploader');
 
+/* global InfoBubble google */
+
 function creator(map, options){
   let m;
   return function(cb){
@@ -102,7 +104,7 @@ module.exports = function(id, key){
     }
     /** Loads map */
     , load: ()=>{
-      if (!lazyload) {
+      if (!lazyload){
         mapLoader(gpath.getPath('mapLoaded'))
           .addPlugins(options.get('libraries'))
           .load();

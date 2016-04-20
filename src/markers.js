@@ -1,5 +1,5 @@
 const _         = require('lodash/core');
-
+/* global google */
 const createInfoWindow = require('./info_windows')
     , addOpenClose     = require('./open_close');
 

@@ -1,5 +1,6 @@
 const _ = require('lodash/core');
 
+/* global google */
 module.exports = function(dataset){
   var data;
   if(dataset){
@@ -29,7 +30,7 @@ module.exports = function(dataset){
     , addCenter: (lat, lng)=>{
       lat = lat || opts.lat;
       lng = lng || opts.lng;
-      if(lat && lng){
+      if (lat && lng){
         opts.center = new google.maps.LatLng(lat, lng);
       }
 

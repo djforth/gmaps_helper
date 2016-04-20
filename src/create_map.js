@@ -5,6 +5,8 @@ var _       = require('lodash/core')
 var closeInfo     = require('./close_info')
     , markerCreator = require('./markers');
 
+/* global InfoBubble google */
+
 function makeMarker(createMarker, closer){
   return function(mk){
     let marker = createMarker(mk);
@@ -36,13 +38,7 @@ function centerMap(map, markers, LatLngBounds){
   return this.obj;
 }
 
-function setPosition(map, LatLng, lat, lng){
-  let pos = LatLng({lat: lat, lng: lng});
-  map.setCenter(pos);
-}
-
 function setZoom(map, zoom, event){
-  // this.obj = this.obj || {}
   var listener = event.addListener(map, 'idle', function(){
     if (this.getZoom() > zoom){
       this.setZoom(zoom);

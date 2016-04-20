@@ -1,4 +1,4 @@
-
+const _ = require('lodash/core');
 /**
 * Google Maps path module.
 * @module create_gmaps_path
@@ -10,10 +10,11 @@
 * @return {object} of functions to build path
 */
 module.exports = function(key) {
-  let gmaps = 'http://maps.google.com/maps/api/js?v=3.';
+  let gmaps, libraries, region;
+  gmaps = 'http://maps.google.com/maps/api/js?v=3.';
   gmaps += `&key=${key}`;
-  let libraries = [];
-  let region    = 'uk';
+  libraries = [];
+  region    = 'uk';
   var obj = {
     /** Add Google maps libraries - see https://developers.google.com/maps/documentation/javascript/libraries
     * @param {string} lib - Google Map Library
