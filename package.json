@@ -80,6 +80,6 @@
     "lodash": "~4.8.2"
   },
   "peerDependencies": {
-    "lodash": "~4.8.2"
+    "lodash": "^4.*.*"
   }
 }
