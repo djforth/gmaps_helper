@@ -33,6 +33,8 @@ You can also update the googlemaps config like so (see https://developers.google
 ```javascript
   var map = Maps("google-map", "[gmaps key goes here]")
             .addConfig(configObj)
+            .setBounds()
+            .setZoom(10)
             .load()
 ```
 

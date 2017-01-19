@@ -110,7 +110,6 @@ module.exports = function(id, key){
     /** Loads map */
     , load: ()=>{
       if (!lazyload){
-        console.log('WHAT?????')
         mapLoader(gpath.getPath('mapLoaded'))
           .addPlugins(options.get('libraries'))
           .load();
@@ -119,10 +118,12 @@ module.exports = function(id, key){
 
     , setBounds: ()=>{
       options.update({boundmap: true});
+      return obj;
     }
 
     , setZoom: (z)=>{
       options.update({zoom: z, autozoom: true});
+      return obj;
     }
   };
 
