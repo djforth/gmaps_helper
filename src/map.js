@@ -59,6 +59,7 @@ module.exports = function(id, key){
     */
     addCallback: (cb)=>{
       window.mapLoaded = partial(window.mapLoaded, cb);
+      return obj;
     }
     /** Add centre map position
     * param {integer} lat - latitude
@@ -66,12 +67,14 @@ module.exports = function(id, key){
     */
     , addCenter: (lat, lng)=>{
       options.update({lat: lat, lng: lng, centermap: true});
+      return obj;
     }
     /** Add gmaps config
     * param {object} config object
     */
     , addConfig: (config)=>{
       options.update(config);
+      return obj;
     }
     /** Adds lazy load
      * param {string} type - Event type
@@ -96,15 +99,18 @@ module.exports = function(id, key){
     */
     , addLibraries: (libraries)=>{
       options.update({libraries: libraries});
+      return obj;
     }
     /** Sets google map type
     * param {string} type - Map type */
     , addType: (type)=>{
       options.update({type: type});
+      return obj;
     }
     /** Loads map */
     , load: ()=>{
       if (!lazyload){
+        console.log('WHAT?????')
         mapLoader(gpath.getPath('mapLoaded'))
           .addPlugins(options.get('libraries'))
           .load();

@@ -1,25 +1,23 @@
-const _ = require("lodash");
+const _ = require('lodash');
 
-var mockClass = require("@djforth/morse-jasmine/mock_class");
-
-
+var mockClass = require('@djforth/morse-jasmine-wp/mock_class');
 
 module.exports = function mockGmaps(methods){
-  let gmap = {maps:{}}
+  let gmap = {maps: {}};
 
   function addObj(k, v){
-    let keys = _.pull(_.keys(v), "type");
+    let keys = _.pull(_.keys(v), 'type');
     let obj = jasmine.createSpyObj(v, keys);
 
     _.forIn(v, (ret, title)=>{
-      if(ret.function){
+      if (ret.function){
         obj[title].and[ret.function](ret.value);
       }
-    })
-    return obj
+    });
+    return obj;
   }
 
-  function withReturn(title, ret) {
+  function withReturn(title, ret){
     let spy = jasmine.createSpy(title);
     spy.and[ret.function](ret.value);
 
@@ -27,19 +25,18 @@ module.exports = function mockGmaps(methods){
   }
 
   _.forIn(methods, (v, k)=>{
-    switch(v.type){
-      case "spyObj":
+    switch (v.type){
+      case 'spyObj':
         gmap.maps[k] = addObj(k, v);
-      break;
-      case "withReturn":
+        break;
+      case 'withReturn':
         gmap.maps[k] = withReturn(k, v);
-      break;
+        break;
       default:
         gmap.maps[k] = jasmine.createSpy(v);
-      break;
+        break;
     }
-
-  })
+  });
 
   return gmap;
-}
+};

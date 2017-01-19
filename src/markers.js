@@ -37,8 +37,11 @@ module.exports = function(map, closer, opts){
     setIcon(marker, mk);
     let infoWindow = createInfoWindow(map, mk.infowindow, opts);
 
-    let infoActions = addOpenClose(map, mk.id, closer);
-    infoActions(marker, infoWindow);
+    if(mk.infowindow){
+      let infoActions = addOpenClose(map, mk.id, closer);
+      infoActions(marker, infoWindow);
+    }
+
 
     return {marker: marker, info: infoWindow};
   };

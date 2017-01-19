@@ -1,85 +1,81 @@
-const _         = require("lodash");
-const Maploader = require("../src/maploader");
+const _         = require('lodash');
+const Maploader = require('../src/maploader');
 
-const checkCalls = require("@djforth/morse-jasmine/check_calls")
-  , createEl = require("@djforth/morse-jasmine/create_elements").createHolder
-  , removeEl = require("@djforth/morse-jasmine/create_elements").removeElement
-  , stubs = require("@djforth/morse-jasmine/stub_inner")(Maploader);
+const checkCalls = require('@djforth/morse-jasmine-wp/check_calls')
+  , createEl = require('@djforth/morse-jasmine-wp/create_elements').createHolder
+  , removeEl = require('@djforth/morse-jasmine-wp/create_elements').removeElement
+  , stubs = require('@djforth/morse-jasmine-wp/stub_inner')(Maploader);
 
-describe('maploader', function() {
-  describe('createScript', function() {
+describe('maploader', function(){
+  describe('createScript', function(){
     let createScript, script;
-    createScript =  Maploader.__get__("createScript");
+    createScript =  Maploader.__get__('createScript');
 
-    beforeEach(function() {
-      script = createScript("/path/to/js", "foo");
+    beforeEach(function(){
+      script = createScript('/path/to/js', 'foo');
     });
 
-    afterEach(function() {
+    afterEach(function(){
       stubs.revertAll();
     });
 
-    it('should return a html element', function() {
+    it('should return a html element', function(){
       expect(_.isElement(script)).toBeTruthy();
     });
 
-    it('should set src correctly', function() {
-      expect(script.src).toContain("/path/to/js");
+    it('should set src correctly', function(){
+      expect(script.src).toContain('/path/to/js');
     });
 
-    it('should set id', function() {
-      expect(script.id).toEqual("foo");
+    it('should set id', function(){
+      expect(script.id).toEqual('foo');
     });
   });
 
-  describe('loadPlugins', function() {
-    let loadPlugins = Maploader.__get__("loadPlugins");
-    beforeEach(function() {
-
-      stubs.addSpy(["createScript"]);
-      stubs.getSpy("createScript").and.callFake((path, id)=>{
-         var script  = document.createElement("script");
-        script.className = "pluginScripts";
-        script.id   = id
-        script.type = "text/javascript";
-        script.src  = "path/to/js";
+  describe('loadPlugins', function(){
+    let loadPlugins = Maploader.__get__('loadPlugins');
+    beforeEach(function(){
+      stubs.addSpy(['createScript']);
+      stubs.getSpy('createScript').and.callFake((path, id)=>{
+        var script  = document.createElement('script');
+        script.className = 'pluginScripts';
+        script.id   = id;
+        script.type = 'text/javascript';
+        script.src  = 'path/to/js';
 
         return script;
       });
     });
 
     afterEach(()=>{
-      stubs.getSpy("createScript").calls.reset()
+      stubs.getSpy('createScript').calls.reset();
       stubs.revertAll();
 
-      let elements = document.querySelectorAll(".pluginScripts");
+      let elements = document.querySelectorAll('.pluginScripts');
       _.forEach(elements, (el)=>{
         removeEl(el);
       });
     });
 
-    it('not call create script if not array', function() {
-      loadPlugins("foo")
-      expect(stubs.getSpy("createScript")).not.toHaveBeenCalled()
+    it('not call create script if not array', function(){
+      loadPlugins('foo');
+      expect(stubs.getSpy('createScript')).not.toHaveBeenCalled();
     });
 
-    it('not call create script if empty array', function() {
-      loadPlugins([])
-      expect(stubs.getSpy("createScript")).not.toHaveBeenCalled()
+    it('not call create script if empty array', function(){
+      loadPlugins([]);
+      expect(stubs.getSpy('createScript')).not.toHaveBeenCalled();
     });
 
-    it('not call create script if array of undefined', function() {
-      loadPlugins([undefined])
-      expect(stubs.getSpy("createScript")).not.toHaveBeenCalled()
+    it('not call create script if array of undefined', function(){
+      loadPlugins([undefined]);
+      expect(stubs.getSpy('createScript')).not.toHaveBeenCalled();
     });
-
-
 
     checkCalls(()=>{
-      loadPlugins(["my/plugin"]);
-      return stubs.getSpy("createScript")
-    }, "createsScript", ()=>["my/plugin", "plugin0"]);
-
+      loadPlugins(['my/plugin']);
+      return stubs.getSpy('createScript');
+    }, 'createsScript', ()=>['my/plugin', 'plugin0']);
   });
 
   // describe('loadmap data', function() {

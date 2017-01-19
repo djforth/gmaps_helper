@@ -3,7 +3,7 @@ const _ = require('lodash/core');
 /* global google */
 module.exports = function(dataset){
   var data;
-  if(dataset){
+  if (dataset){
     data = JSON.parse(dataset);
   }
 

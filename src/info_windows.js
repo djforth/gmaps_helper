@@ -24,8 +24,8 @@ function createInfoBubble(map, info, opts){
   return new InfoBubble(options);
 }
 
-module.exports = function(map, info, opts) {
-  if (typeof InfoBubble !== 'undefined') {
+module.exports = function(map, info, opts){
+  if (typeof InfoBubble !== 'undefined'){
     return createInfoBubble(map, info, opts);
   }
 

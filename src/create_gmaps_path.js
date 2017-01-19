@@ -9,7 +9,7 @@ const _ = require('lodash/core');
 * @param {string} key - Google Map API Key
 * @return {object} of functions to build path
 */
-module.exports = function(key) {
+module.exports = function(key){
   let gmaps, libraries, region;
   gmaps = 'http://maps.google.com/maps/api/js?v=3.';
   gmaps += `&key=${key}`;
@@ -37,7 +37,7 @@ module.exports = function(key) {
     * @return {string} return path
     */
     , getPath: (cb)=>{
-      if (!_.isEmpty(libraries)) {
+      if (!_.isEmpty(libraries)){
         gmaps += `&libraries=${libraries.join(',')}`;
       }
       gmaps += '&async=2';

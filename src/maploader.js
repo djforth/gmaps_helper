@@ -37,7 +37,7 @@ module.exports = function(path){
     addPlugins: (p)=>{
       if (_.isArray(p)){
         plugins = plugins.concat(p);
-      } else if(_.isString(p)) {
+      } else if (_.isString(p)){
         plugins.push(p);
       }
 

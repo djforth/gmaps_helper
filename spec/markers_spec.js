@@ -1,120 +1,115 @@
-const _         = require("lodash");
-const markers = require("../src/markers");
+const _         = require('lodash');
+const markers = require('../src/markers');
 
-var mockGmaps = require("./helpers/stub_gmaps")
-  , stubs     = require("@djforth/morse-jasmine/stub_inner")(markers)
-  , checkCalls  = require("@djforth/morse-jasmine/check_calls");
+var mockGmaps = require('./helpers/stub_gmaps')
+  , stubs     = require('@djforth/morse-jasmine-wp/stub_inner')(markers)
+  , checkCalls  = require('@djforth/morse-jasmine-wp/check_calls');
 
-
-describe('markers', function() {
+describe('markers', function(){
   let spy;
-  beforeEach(function() {
-    spy = jasmine.createSpyObj("marker", ["setIcon"])
+  beforeEach(function(){
+    spy = jasmine.createSpyObj('marker', ['setIcon']);
     window.google = mockGmaps(
-        {Marker:{type:"withReturn", function:"callFake", value:()=>spy }
-        , LatLng:{ type:"withReturn", function:"callFake", value:()=>"lnglat"}
-        }
+      {Marker: {type: 'withReturn', function: 'callFake', value: ()=>spy}
+        , LatLng: {type: 'withReturn', function: 'callFake', value: ()=>'lnglat'}
+      }
       );
   });
 
-  afterEach(function() {
+  afterEach(function(){
     stubs.revertAll();
   });
 
-  describe('setIcon', function() {
+  describe('setIcon', function(){
     let setIcon;
-    beforeEach(function() {
-      setIcon = markers.__get__("setIcon");
+    beforeEach(function(){
+      setIcon = markers.__get__('setIcon');
     });
 
-    it('should create icon if right data', function() {
-      setIcon(spy, {picture:"pin.png", width:10, height:10});
+    it('should create icon if right data', function(){
+      setIcon(spy, {picture: 'pin.png', width: 10, height: 10});
       expect(spy.setIcon).toHaveBeenCalled();
       let calls = spy.setIcon.calls.argsFor(0);
-      expect(calls[0]).toEqual("pin.png");
+      expect(calls[0]).toEqual('pin.png');
       expect(_.isArray(calls[1])).toBeTruthy();
       expect(calls[1]).toEqual([10, 10]);
     });
 
-    it('should not call setIcon if data not right', function() {
+    it('should not call setIcon if data not right', function(){
       setIcon(spy, {});
       expect(spy.setIcon).not.toHaveBeenCalled();
     });
 
-    it('should not call setIcon if no marker', function() {
-      setIcon(null, {picture:"pin.png", width:10, height:10});
+    it('should not call setIcon if no marker', function(){
+      setIcon(null, {picture: 'pin.png', width: 10, height: 10});
       expect(spy.setIcon).not.toHaveBeenCalled();
     });
   });
 
-  describe('create marker', function() {
+  describe('create marker', function(){
     let createMarker, maps, closer, spyIa, opts, data;
     let mk = {
-        id:1
-      , lng:2
-      , lat:3
-      , infowindow:"info"
-    }
+      id: 1
+      , lng: 2
+      , lat: 3
+      , infowindow: 'info'
+    };
 
-    beforeEach(function() {
-      maps   = jasmine.createSpy("maps");
-      closer = jasmine.createSpy("closer");
-      stubs.addSpy(["createInfoWindow", "addOpenClose", "setIcon"]);
-      stubs.getSpy("createInfoWindow").and.returnValue("infoWindow");
+    beforeEach(function(){
+      maps   = jasmine.createSpy('maps');
+      closer = jasmine.createSpy('closer');
+      stubs.addSpy(['createInfoWindow', 'addOpenClose', 'setIcon']);
+      stubs.getSpy('createInfoWindow').and.returnValue('infoWindow');
 
-      spyIa = jasmine.createSpy("ia")
-      stubs.getSpy("addOpenClose").and.returnValue(spyIa);
+      spyIa = jasmine.createSpy('ia');
+      stubs.getSpy('addOpenClose').and.returnValue(spyIa);
 
       opts = {
-        foo:"bar"
-      }
+        foo: 'bar'
+      };
 
-      createMarker = markers(maps, closer, opts)
-      data = createMarker(mk)
+      createMarker = markers(maps, closer, opts);
+      data = createMarker(mk);
     });
 
     afterEach(()=>{
       stubs.revertAll();
     });
 
-    it('should return a function', function() {
-      expect(_.isFunction(createMarker)).toBeTruthy()
+    it('should return a function', function(){
+      expect(_.isFunction(createMarker)).toBeTruthy();
     });
 
-
-
-    it('should call new marker', function() {
-
+    it('should call new marker', function(){
       let m = google.maps.Marker;
       expect(m).toHaveBeenCalled();
       let calls = m.calls.argsFor(0)[0];
       expect(calls.map).toEqual(maps);
-
     });
 
     checkCalls(()=>{
-      return google.maps.LatLng
-    }, "new LatLng", [3, 2]);
+      return google.maps.LatLng;
+    }, 'new LatLng', [3, 2]);
 
     checkCalls(()=>{
-      return  stubs.getSpy("setIcon");
-    }, "setIcon", ()=>[spy, mk]);
+      return  stubs.getSpy('setIcon');
+    }, 'setIcon', ()=>[spy, mk]);
 
     checkCalls(()=>{
-      return  stubs.getSpy("createInfoWindow");
-    }, "createInfoWindow", ()=>[maps, mk.infowindow, opts]);
+      return  stubs.getSpy('createInfoWindow');
+    }, 'createInfoWindow', ()=>[maps, mk.infowindow, opts]);
 
     checkCalls(()=>{
-      return  stubs.getSpy("addOpenClose");
-    }, "addOpenClose", ()=>[maps, mk.id, closer]);
+      return  stubs.getSpy('addOpenClose');
+    }, 'addOpenClose', ()=>[maps, mk.id, closer]);
 
     checkCalls(()=>{
       return  spyIa;
-    }, "infoActions", ()=>[spy, "infoWindow"]);
+    }, 'infoActions', ()=>[spy, 'infoWindow']);
 
-    it('should return marker and info window', function() {
+    it('should return marker and info window', function(){
       expect(data.marker).toEqual(spy);
-      expect(data.info).toEqual("infoWindow");
+      expect(data.info).toEqual('infoWindow');
     });
   });
 });
