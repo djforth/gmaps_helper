@@ -1,6 +1,6 @@
 
-const _         = require('lodash');
-const GmapsPath = require('../src/create_gmaps_path');
+import _ from 'lodash';
+import GmapsPath from 'src/create_gmaps_path';
 
 describe('create_gmaps_path', function(){
   let gmaps_path, path;

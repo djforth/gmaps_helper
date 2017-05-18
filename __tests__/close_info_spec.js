@@ -1,7 +1,6 @@
-const _         = require('lodash');
-const closeInfo = require('../src/close_info');
-
-var dummyMarker = require('./helpers/stub_marker');
+import _ from 'lodash';
+import closeInfo from 'src/close_info';
+import dummyMarker from './helpers/stub_marker';
 
 describe('closeInfo', function(){
   let closer, map;

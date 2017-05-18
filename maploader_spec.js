@@ -1,10 +1,11 @@
-const _         = require('lodash');
-const Maploader = require('../src/maploader');
+import _ from 'lodash';
+import Maploader from '../src/maploader';
 
-const checkCalls = require('@djforth/morse-jasmine-wp/check_calls')
-  , createEl = require('@djforth/morse-jasmine-wp/create_elements').createHolder
-  , removeEl = require('@djforth/morse-jasmine-wp/create_elements').removeElement
-  , stubs = require('@djforth/morse-jasmine-wp/stub_inner')(Maploader);
+import checkCalls from '@djforth/morse-jasmine-wp/check_calls';
+import {createHolder as createEl} from '@djforth/morse-jasmine-wp/create_elements';
+import {removeElement as removeEl} from '@djforth/morse-jasmine-wp/create_elements';
+import Stubs from '@djforth/morse-jasmine-wp/stub_inner';
+stubs = Stubs(Maploader);
 
 describe('maploader', function(){
   describe('createScript', function(){

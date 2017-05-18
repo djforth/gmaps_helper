@@ -1,4 +1,4 @@
-const _ = require('lodash/core');
+import _ from 'lodash';
 /**
 * Google Maps path module.
 * @module close_info
@@ -10,7 +10,7 @@ const _ = require('lodash/core');
 * @return {object} of functions to build path
 */
 
-module.exports = function closeInfo(map){
+export default (map)=> {
   let markers = [];
   return {
     /** Add markers to list

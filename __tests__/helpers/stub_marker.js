@@ -1,5 +1,5 @@
 
-module.exports = function dummyMarker(i){
+export default function dummyMarker(i){
   return {
     marker: jasmine.createSpy(`marker${i}`)
     , info: {

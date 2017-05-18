@@ -1,7 +1,7 @@
-const _         = require('lodash');
-const Options = require('../src/options');
+import _ from 'lodash';
+import Options from '../src/options';
 
-var mockGmaps = require('./helpers/stub_gmaps');
+import mockGmaps from './helpers/stub_gmaps';
 
 describe('options', function(){
   let dataset, opts;

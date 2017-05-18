@@ -1,6 +1,6 @@
-var isElement  = require('lodash/isElement')
-  , isFunction = require('lodash/isFunction')
-  , partial    = require('lodash/partial');
+import isElement from 'lodash/isElement';
+import isFunction from 'lodash/isFunction';
+import partial from 'lodash/partial';
 
 /** Add loader class */
 function addLoader(el){
@@ -25,7 +25,7 @@ function removeLoader(el){
 * @return {object} of functions to build path
 */
 
-module.exports = function(el, event, callback){
+export default (el, event, callback)=>{
   if (!isElement(el)) return;
 
   var loader = partial(removeLoader, el);

@@ -1,9 +1,9 @@
-var _       = require('lodash/core')
-    , bind    = require('lodash/bind')
-    , partial = require('lodash/partial');
+import _ from 'lodash';
+import bind from 'lodash/bind';
+import partial from 'lodash/partial';
 
-var closeInfo     = require('./close_info')
-    , markerCreator = require('./markers');
+import closeInfo from './close_info';
+import markerCreator from './markers';
 
 /* global InfoBubble google */
 
@@ -49,7 +49,7 @@ function setZoom(map, zoom, event){
   return this.obj;
 }
 
-module.exports = function(el){
+export default (el)=>{
   let map, markers;
 
   return (Map, options)=>{

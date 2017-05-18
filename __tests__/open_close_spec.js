@@ -1,15 +1,17 @@
-const _         = require('lodash');
-const openClose = require('../src/open_close');
+import _ from 'lodash';
+import openClose from 'src/open_close';
 
-var mockGmaps = require('./helpers/stub_gmaps')
-  , stubs     = require('@djforth/morse-jasmine-wp/stub_inner')(openClose)
-  , spymanager = require('@djforth/morse-jasmine-wp/spy_manager')()
-  , checkCalls = require('@djforth/morse-jasmine-wp/check_calls');
+import mockGmaps from './helpers/stub_gmaps';
+import Stubs from '@djforth/morse-jasmine-wp/stub_inner';
+const stubs = Stubs(openClose);
+import Spymanager from '@djforth/morse-jasmine-wp/spy_manager';
+const spymanager = Spymanager();
+import checkCalls from '@djforth/morse-jasmine-wp/check_calls';
 
 describe('openClose', function(){
   let oc;
   beforeEach(function(){
-    // spy = jasmine.createSpyObj("marker", ["setIcon"])
+    spy = jasmine.createSpyObj("marker", ["setIcon"])
     window.google = mockGmaps(
       {event: {
         type: 'spyObj'

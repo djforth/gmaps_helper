@@ -1,6 +1,6 @@
-const _ = require('lodash');
+import _ from 'lodash';
 
-var MockClass = require('@djforth/morse-jasmine-wp/mock_class');
+import MockClass from '@djforth/morse-jasmine-wp/mock_class';
 
 function withReturn(spy, type, value){
   spy.and[type](value);
@@ -35,7 +35,7 @@ function getSpy(list, class_name, spy_name){
   return _.find(spies, (spy)=>spy.title === spy_name).spy;
 }
 
-module.exports = function(){
+export default function(){
   let gmap = window.google = {maps: {}};
   let spies = [];
 

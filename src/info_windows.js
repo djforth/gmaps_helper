@@ -1,4 +1,4 @@
-const _ = require('lodash/core');
+import _ from 'lodash';
 
 /* global InfoBubble google */
 function createInfoBubble(map, info, opts){
@@ -24,7 +24,7 @@ function createInfoBubble(map, info, opts){
   return new InfoBubble(options);
 }
 
-module.exports = function(map, info, opts){
+export default (map, info, opts)=>{
   if (typeof InfoBubble !== 'undefined'){
     return createInfoBubble(map, info, opts);
   }

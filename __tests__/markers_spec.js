@@ -1,9 +1,10 @@
-const _         = require('lodash');
-const markers = require('../src/markers');
+import _ from 'lodash';
+import markers from '../src/markers';
 
-var mockGmaps = require('./helpers/stub_gmaps')
-  , stubs     = require('@djforth/morse-jasmine-wp/stub_inner')(markers)
-  , checkCalls  = require('@djforth/morse-jasmine-wp/check_calls');
+import mockGmaps from './helpers/stub_gmaps';
+import Stubs from '@djforth/morse-jasmine-wp/stub_inner';
+const stubs = Stubs(markers);
+import checkCalls from '@djforth/morse-jasmine-wp/check_calls';
 
 describe('markers', function(){
   let spy;

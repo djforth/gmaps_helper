@@ -1,8 +1,8 @@
-const _ = require('lodash');
+import _ from 'lodash';
 
-var mockClass = require('@djforth/morse-jasmine-wp/mock_class');
+import mockClass from '@djforth/morse-jasmine-wp/mock_class';
 
-module.exports = function mockGmaps(methods){
+export default (methods)=>{
   let gmap = {maps: {}};
 
   function addObj(k, v){

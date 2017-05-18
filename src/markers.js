@@ -1,7 +1,7 @@
-const _         = require('lodash/core');
+import _ from 'lodash';
 /* global google */
-const createInfoWindow = require('./info_windows')
-    , addOpenClose     = require('./open_close');
+import createInfoWindow from './info_windows';
+import addOpenClose from './open_close';
 
 /**
  * Marker module.
@@ -27,7 +27,7 @@ function setIcon(marker, icon){
  * @params {object} info window options
  * @return {object} marker & info(window)
  */
-module.exports = function(map, closer, opts){
+export default (map, closer, opts)=>{
   return function(mk){
     let marker = new google.maps.Marker({
       position: new google.maps.LatLng(mk.lat, mk.lng)

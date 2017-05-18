@@ -1,4 +1,4 @@
-const _ = require('lodash/core');
+import _ from 'lodash';
 /**
 * Google Maps path module.
 * @module create_gmaps_path
@@ -9,7 +9,7 @@ const _ = require('lodash/core');
 * @param {string} key - Google Map API Key
 * @return {object} of functions to build path
 */
-module.exports = function(key){
+export default (key)=>{
   let gmaps, libraries, region;
   gmaps = 'http://maps.google.com/maps/api/js?v=3.';
   gmaps += `&key=${key}`;

@@ -1,7 +1,7 @@
-const _         = require('lodash');
-const infoWindow = require('../src/info_windows');
+import _ from 'lodash';
+import infoWindow from '../src/info_windows';
 
-var mockGmaps = require('./helpers/stub_gmaps');
+import mockGmaps from './helpers/stub_gmaps';
 
 describe('infoWindow', function(){
   afterEach(function(){

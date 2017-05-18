@@ -1,4 +1,4 @@
-var _ = require('lodash/core');
+import _ from 'lodash';
 /* global google InfoBubble */
 function addClose(map, id){
   return function(marker, infowindow){
@@ -17,7 +17,7 @@ function addClose(map, id){
   };
 }
 
-module.exports = function addOpenClose(map, id, closer){
+export default (map, id, closer)=>{
   let close = addClose(map, id);
 
   return function(marker, infowindow){

@@ -1,7 +1,7 @@
-const _ = require('lodash/core');
+import _ from 'lodash';
 
 /* global google */
-module.exports = function(dataset){
+export default (dataset)=>{
   var data;
   if (dataset){
     data = JSON.parse(dataset);

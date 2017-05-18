@@ -1,15 +1,19 @@
-const _        = require('lodash');
+import _ from 'lodash';
 
-const CreateMap = require('../src/create_map');
+import CreateMap from '../src/create_map';
 
-const checkCalls = require('@djforth/morse-jasmine-wp/check_calls')
-  , createEl = require('@djforth/morse-jasmine-wp/create_elements').createHolder
-  , getMod   = require('@djforth/morse-jasmine-wp/get_module')(CreateMap)
-  , gmapsSub   = require('./helpers/stub_gmaps_new')()
-  , removeEl = require('@djforth/morse-jasmine-wp/create_elements').removeElement
-  , stubs = require('@djforth/morse-jasmine-wp/stub_inner')(CreateMap)
-  , mockClass = require('@djforth/morse-jasmine-wp/mock_class')
-  , spyManager = require('@djforth/morse-jasmine-wp/spy_manager')();
+import checkCalls from '@djforth/morse-jasmine-wp/check_calls';
+import {createHolder as createEl} from '@djforth/morse-jasmine-wp/create_elements';
+import GetMod from '@djforth/morse-jasmine-wp/get_module';
+const getMod = GetMod(CreateMap);
+import GmapsSub from './helpers/stub_gmaps_new';
+const gmapsSub = GmapsSub();
+import {removeElement as removeEl} from '@djforth/morse-jasmine-wp/create_elements';
+import Stubs from '@djforth/morse-jasmine-wp/stub_inner';
+const stubs = Stubs(CreateMap);
+import mockClass from '@djforth/morse-jasmine-wp/mock_class';
+import SpyManager from '@djforth/morse-jasmine-wp/spy_manager';
+const spyManager = SpyManager();
 
 describe('mapCreator', function(){
   let map;

@@ -1,12 +1,12 @@
-const _         = require('lodash/core')
-    , isElement = require('lodash/isElement')
-    , partial   = require('lodash/partial');
+import _ from 'lodash';
+import isElement from 'lodash/isElement';
+import partial from 'lodash/partial';
 
-const createPath    = require('./create_gmaps_path')
-    , getOptions    = require('./options')
-    , LazyLoad      = require('./lazyload')
-    , mapCreator    = require('./create_map')
-    , mapLoader     = require('./maploader');
+import createPath from './create_gmaps_path';
+import getOptions from './options';
+import LazyLoad from './lazyload';
+import mapCreator from './create_map';
+import mapLoader from './maploader';
 
 /* global InfoBubble google */
 
@@ -41,7 +41,7 @@ function creator(map, options){
  * @param {string} key - Google Map API Key
  * @return {object} of functions to build path
  */
-module.exports = function(id, key){
+export default (id, key)=>{
   let map, options, gpath, lazyload, el;
   lazyload =  false;
   el = document.getElementById(id);

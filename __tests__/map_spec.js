@@ -1,15 +1,18 @@
-const _         = require('lodash');
-const Gmap = require('../src/map');
+import _ from 'lodash';
+import Gmap from '../src/map';
 
-const checkCalls = require('@djforth/morse-jasmine-wp/check_calls')
-  , createEl = require('@djforth/morse-jasmine-wp/create_elements').createHolder
-  , checkMulti = require('@djforth/morse-jasmine-wp/check_multiple_calls')
-  , getMod     = require('@djforth/morse-jasmine-wp/get_module')(Gmap)
-  , removeEl = require('@djforth/morse-jasmine-wp/create_elements').removeElement
-  , stubs      = require('@djforth/morse-jasmine-wp/stub_inner')(Gmap)
-  , stub_chain = require('@djforth/morse-jasmine-wp/stub_chain_methods')
-  , mockClass  = require('@djforth/morse-jasmine-wp/mock_class')
-  , spyManager = require('@djforth/morse-jasmine-wp/spy_manager')();
+import checkCalls from '@djforth/morse-jasmine-wp/check_calls';
+import {createHolder as createEl} from '@djforth/morse-jasmine-wp/create_elements';
+import checkMulti from '@djforth/morse-jasmine-wp/check_multiple_calls';
+import GetMod from '@djforth/morse-jasmine-wp/get_module';
+const getMod = GetMod(Gmap);
+import {removeElement as removeEl} from '@djforth/morse-jasmine-wp/create_elements';
+import Stubs from '@djforth/morse-jasmine-wp/stub_inner';
+const stubs = Stubs(Gmap);
+import stub_chain from '@djforth/morse-jasmine-wp/stub_chain_methods';
+import mockClass from '@djforth/morse-jasmine-wp/mock_class';
+import SpyManager from '@djforth/morse-jasmine-wp/spy_manager';
+const spyManager = SpyManager();
 
 describe('map', function(){
   afterEach(function(){

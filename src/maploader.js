@@ -1,4 +1,4 @@
-const _ = require('lodash/core');
+import _ from 'lodash';
 /** Creates Script tag to load api code */
 function createScript(path, id){
   var script  = document.createElement('script');
@@ -30,7 +30,7 @@ function loadPlugins(plugins){
 * @param {string} Path to Google Map API with Query Strings
 * @return {object} of functions to build path
 */
-module.exports = function(path){
+export default (path)=>{
   let plugins = [];
   var obj = {
     /** Add plugins */

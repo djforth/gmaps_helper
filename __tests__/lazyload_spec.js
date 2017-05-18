@@ -1,12 +1,13 @@
-const _        = require('lodash');
+import _ from 'lodash';
 
-const LazyLoad = require('../src/lazyload');
+import LazyLoad from '../src/lazyload';
 
-const checkCalls = require('@djforth/morse-jasmine-wp/check_calls')
-  , createEl = require('@djforth/morse-jasmine-wp/create_elements').createHolder
-  , removeEl = require('@djforth/morse-jasmine-wp/create_elements').removeElement
-  , sim_event = require('@djforth/morse-jasmine-wp/simulate_click')
-  , stubs = require('@djforth/morse-jasmine-wp/stub_inner')(LazyLoad);
+import checkCalls from '@djforth/morse-jasmine-wp/check_calls';
+import {createHolder as createEl} from '@djforth/morse-jasmine-wp/create_elements';
+import {removeElement as removeEl} from '@djforth/morse-jasmine-wp/create_elements';
+import sim_event from '@djforth/morse-jasmine-wp/simulate_click';
+import Stubs from '@djforth/morse-jasmine-wp/stub_inner';
+const stubs = Stubs(LazyLoad);
 
 describe('Lazyload', function(){
   let el, spy;

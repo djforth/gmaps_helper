@@ -1,5 +1,5 @@
 {
   "karma": {
-    "input": "./spec/test_bundle.js"
+    "input": "./__tests__/test_bundle.js"
   }
 }
