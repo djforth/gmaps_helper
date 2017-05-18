@@ -5,7 +5,7 @@ import checkCalls from '@djforth/morse-jasmine-wp/check_calls';
 import {createHolder as createEl} from '@djforth/morse-jasmine-wp/create_elements';
 import {removeElement as removeEl} from '@djforth/morse-jasmine-wp/create_elements';
 import Stubs from '@djforth/morse-jasmine-wp/stub_inner';
-stubs = Stubs(Maploader);
+const stubs = Stubs(Maploader);
 
 describe('maploader', function(){
   describe('createScript', function(){
