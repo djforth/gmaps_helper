@@ -1,13 +1,10 @@
 {
-  "presets": [
-    ["es2015", {"modules": false}],
-    "es2016",
-    "es2017"
-  ],
+  "presets": [],
   "env": {
     "production": {
       "plugins": [
         "lodash"
+        , "add-module-exports"
       ]
       , "presets": [
         ["env", {
@@ -21,7 +18,7 @@
               ]
             }
         }]
-        , 'babili'
+        , ['minify', {mangle: false}]
       ]
     },
     "test": {
