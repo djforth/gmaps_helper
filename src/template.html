@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link href="https://cloud.webtype.com/css/c01fdcc8-f011-412e-aa4c-eaf6415cffc3.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700:latin" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#55a440" />
+    <style>
+      .map-wrapper {
+        height: 400px;
+        margin: 2em 0;
+        position: relative;
+        width: 100%;
+      }
+      .map-container {
+        position: absolute;
+        height: 100%;
+        left:0;
+        top: 0;
+        width: 100%;
+      }
+    </style>
+</head>
+<body>
+
+  <div class='map-wrapper'>
+      <div id="google-map" class='map-container' data-map=<%= htmlWebpackPlugin.options.pins1 %>> </div>
+  </div>
+  <div class='map-wrapper'>
+    <div id="google-map-2" class='map-container' data-map=
+    <%= htmlWebpackPlugin.options.pins2 %>> </div>
+  </div>
+</body>
+</html>

@@ -6,13 +6,17 @@ A small utility that helps build google maps.  Vanilla JS with lodash/core depen
 ## Install
 
 ```bash
+yarn add @djforth/gmaps_helper
+```
+
+```bash
 npm install --save @djforth/gmaps_helper
 ```
 
 Setting up HTML
 
 ```html
-<div id="google-map" data-map=""{"pins":{"id":1,"lat":50.722273,"lng":-1.873244,"infowindow":"\u003cdiv class=\"details\"\u003e\n  \u003ch3\u003eMy Info Window\u003c/h3\u003e\n \u003cp\u003eMy Address, Some Town.\nPostcode\u003c/p\u003e\n\u003c/div\u003e\n"}}""> </div>
+<div id="google-map" data-map="{\"pins\":{\"id\":1,\"lat\":50.722273,\"lng\":-1.873244,\"infowindow\":\"<div class='details'><h3>My Info Window</h3><p>My Address, Some Town. Postcode</p></div>\"}}"> </div>
 ```
 
 The data map object can also pass config data or pins as an array.
@@ -21,7 +25,7 @@ Basic set up is
 
 ```javascipts
 
-var Maps = require("@djforth/gmaps_helper")
+import Maps from "@djforth/gmaps_helper";
 var map = Maps("google-map", "[gmaps key goes here]")
             .load()
 ```

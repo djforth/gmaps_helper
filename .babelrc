@@ -1,14 +1,36 @@
 {
   "presets": [],
+  "plugins": ["transform-object-rest-spread"],
   "env": {
+    "development": {
+      "plugins": [
+        "syntax-dynamic-import"
+      ],
+      "presets": [
+        [
+          "env",
+          {
+          modules: false,
+            "targets": {
+              'node': 4,
+              "browsers": [
+                "last 2 versions",
+                "chrome >= 55",
+                "IE >= 11"
+              ]
+            }
+          }
+        ]
+      ]
+    },
     "production": {
       "plugins": [
-        "lodash"
-        , "add-module-exports"
-      ]
-      , "presets": [
+        "external-helpers",
+        "syntax-dynamic-import"
+      ], 
+      "presets": [
         ["env", {
-          modules: 'umd',
+          modules: false,
           "targets": {
               'node': 4,
               "browsers": [
@@ -18,21 +40,35 @@
               ]
             }
         }]
-        , ['minify', {mangle: false}]
       ]
     },
     "test": {
       "plugins": [
-
+        "babel-plugin-dynamic-import-node",
+        "transform-async-to-generator",
         [
           "istanbul",
           {
             "exclude": [
-              "**/*_spec.js"
+              "spec/**/*.js",
+              "__tests__/**/*.test.js",
+              "__mocks__/**/*.js"
             ]
           }
         ],
         "rewire"
+      ],
+      "presets": [
+        ["env", {
+          "targets": {
+            "browsers": [
+              "last 2 versions",
+              "chrome >= 55",
+              "IE >= 11"
+            ]
+          },
+          "useBuiltIns": true
+        }]
       ]
     }
   }
