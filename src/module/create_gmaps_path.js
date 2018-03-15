@@ -1,4 +1,3 @@
-import _ from 'lodash';
 /**
  * Google Maps path module.
  * @module create_gmaps_path
@@ -37,7 +36,7 @@ export default key => {
      * @return {string} return path
      */
     getPath: cb => {
-      if (!_.isEmpty(libraries)) {
+      if (libraries.length > 0) {
         gmaps += `&libraries=${libraries.join(',')}`;
       }
       gmaps += '&async=2';

@@ -7,6 +7,12 @@ import mapCreator from './create_map';
 import mapLoader from './maploader';
 import LoadedCallback from './loaded_callback';
 
+if (!Array.isArray) {
+  Array.isArray = function(arg) {
+    return Object.prototype.toString.call(arg) === '[object Array]';
+  };
+}
+
 /* global InfoBubble google */
 
 const findMap = maps => id => {

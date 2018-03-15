@@ -38,8 +38,10 @@
                 "chrome >= 55",
                 "IE >= 11"
               ]
-            }
+            },
+            "useBuiltIns": true
         }]
+        
       ]
     },
     "test": {

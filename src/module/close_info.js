@@ -1,4 +1,3 @@
-import _ from 'lodash';
 /**
  * Google Maps path module.
  * @module close_info

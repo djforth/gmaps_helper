@@ -7,7 +7,6 @@ function makeMarker(createMarker, closer) {
   return function(mk) {
     let marker = createMarker(mk);
     closer.addMarkers(marker);
-    console.log(marker);
     return marker;
   };
 }
@@ -44,7 +43,7 @@ export default el => {
   if (!el) return null;
   return (Map, options) => {
     // Should tweak this - not side effect free
-    map = new google.maps.Map(el, options.getAll());
+    map = new Map(el, options.getAll());
 
     let closer = closeInfo(map);
     let create = makeMarker(markerCreator(map, closer), closer);

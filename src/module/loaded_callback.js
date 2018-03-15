@@ -10,11 +10,9 @@ export default maps => {
       if (options.get('boundmap')) {
         gmap.centerMap(google.maps.LatLngBounds);
       }
-
       if (options.get('autozoom')) {
         gmap.setZoom(google.maps.event);
       }
-
       return gmap.getMap();
     });
 

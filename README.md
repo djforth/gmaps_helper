@@ -16,17 +16,16 @@ npm install --save @djforth/gmaps_helper
 Setting up HTML
 
 ```html
-<div id="google-map" data-map="{\"pins\":{\"id\":1,\"lat\":50.722273,\"lng\":-1.873244,\"infowindow\":\"<div class='details'><h3>My Info Window</h3><p>My Address, Some Town. Postcode</p></div>\"}}"> </div>
+<div id='google-map-id' data-map='{\'pins\':{\'id\':1,\'lat\':50.722273,\'lng\':-1.873244,\'infowindow\':\'<div class='details'><h3>My Info Window</h3><p>My Address, Some Town. Postcode</p></div>\'}}'> </div>
 ```
 
 The data map object can also pass config data or pins as an array.
 
 Basic set up is
 
-```javascipts
-
-import Maps from "@djforth/gmaps_helper";
-var map = Maps("google-map", "[gmaps key goes here]")
+```javascipt
+  import Maps from '@djforth/gmaps_helper';
+  var map = Maps('[gmaps key goes here]')
             .load()
 ```
 
@@ -35,68 +34,43 @@ The constructor is passed id of the div you wish to apply the map. Also the goog
 You can also update the googlemaps config like so (see https://developers.google.com/maps/documentation/javascript/3.exp/reference#MapOptions)
 
 ```javascript
-  var map = Maps("google-map", "[gmaps key goes here]")
-            .addConfig(configObj)
+  const map = Maps('[gmaps key goes here]')
+            .addConfig('google-map-id', configObj)
             .setBounds()
             .setZoom(10)
             .load()
 ```
 
-Add center (latitude, longitude)
+Add center (id of map, latitude, longitude)
 ```javascript
-  var map = Maps("google-map", "[gmaps key goes here]")
-            .addCenter(50.722273, -1.873244)
+  const map = Maps('[gmaps key goes here]')
+            .addCenter('google-map-id', 50.722273, -1.873244)
             .load()
 ```
 
 Add Map type (https://developers.google.com/maps/documentation/javascript/3.exp/reference#MapTypeId)
 
 ```javascript
-  var map = Maps("google-map", "[gmaps key goes here]")
-            .addType("HYBRID")
+  const map = Maps('[gmaps key goes here]')
+            .addType('google-map-id', 'HYBRID')
             .load()
 ```
 
 Add Plugins (https://developers.google.com/maps/documentation/javascript/libraries)
 
 ```javascript
-  var map = Maps("google-map", "[gmaps key goes here]")
-            .addLibraries("geometry")
+  var map = Maps('[gmaps key goes here]')
+            .addLibraries('google-map-id', 'geometry')
             .load()
-```
-
-Add LazyLoad:
-
-This applies event to div, standard events e.g. click, mouseover.  Will apply loader class to div while maps loads
-
-```javascript
-  var map = Maps("google-map", "[gmaps key goes here]")
-            .addlazyload("mouseover")
 ```
 
 Add callback returns google map object:
 
 ```javascript
-var map = Maps("google-map", "[gmaps key goes here]")
-            .addCallback(function(map){
-              // do something with map...
+  var map = Maps('[gmaps key goes here]')
+            .addCallback(function(maps /* Array of maps [{map, options}]*/){
+              // do something with maps...
             })
-```
-
-
-Change path
-```javascript
-  var Maps  = require("@djforth/gmaps_helper")
-  var paths = require("@djforth/gmaps_helper/paths")
-
-  paths([gmaps key goes here])
-    .addRegion("ES")
-    .addLibrary("geometry")
-
-
-  var map = Maps("google-map")
-            .addPath(paths)
-            .load()
 ```
 
 

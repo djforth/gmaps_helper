@@ -104,8 +104,10 @@ const config = {
       pins2: JSON.stringify({
         pins: {
           id: 1,
-          // infowindow:
-          //   "\u003cdiv class='details'>\u003ch3\u003eMy Info Window\u003c/h3\u003e\u003cp\u003eMy Address, Some Town. Postcode\u003c/p\u003e\u003c/div\u003e",
+          picture: '/map-pin.png',
+          width: 21,
+          height: 31,
+          marker_anchor: [10, 25],
           lat: 50.722273,
           lng: -1.873244,
         },

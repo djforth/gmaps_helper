@@ -7,8 +7,7 @@ import commonjs from 'rollup-plugin-commonjs';
 
 export default {
   input: 'src/module/index.js',
-  name: 'GoogleMapHelper',
-  sourcemap: true,
+
   plugins: [
     resolve({
       browser: true,
@@ -18,7 +17,7 @@ export default {
     babel({
       exclude: 'node_modules/**', // only transpile our source code
       // , externalHelpers: true
-      plugins: ['external-helpers']
+      plugins: ['external-helpers'],
       // , runtimeHelpers: true
     }),
     replace({
@@ -30,5 +29,7 @@ export default {
   output: {
     file: 'index.js',
     format: 'umd',
+    name: 'GoogleMapHelper',
+    sourcemap: true,
   },
 };

@@ -46,12 +46,6 @@ describe('options', () => {
       google.maps.LatLng.mockClear();
     });
 
-    test('should not center if no latlng', () => {
-      opts.addCenter();
-      expect(google.maps.LatLng).not.toHaveBeenCalled();
-      expect(opts.get('center')).toBeUndefined();
-    });
-
     test('should allow you to add center', () => {
       opts.addCenter(1, 2);
       expect(google.maps.LatLng).toHaveBeenCalledWith(1, 2);

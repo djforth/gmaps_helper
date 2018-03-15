@@ -29,17 +29,17 @@ const setIcon = (marker, icon) => {
  * @return {object} marker & info(window)
  */
 export default (map, closer, opts) => mk => {
-  console.log(mk, map);
   const { lng, lat } = mk;
   let marker = new google.maps.Marker({
-    position: { lng, lat },
+    position: new google.maps.LatLng(lat, lng),
     map: map,
   });
 
   setIcon(marker, mk);
-  let infoWindow = createInfoWindow(map, mk.infowindow, opts);
+  let infoWindow;
 
   if (mk.infowindow) {
+    infoWindow = createInfoWindow(map, mk.infowindow, opts);
     let infoActions = addOpenClose(map, mk.id, closer);
     infoActions(marker, infoWindow);
   }

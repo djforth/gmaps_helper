@@ -1,7 +1,8 @@
 /* global google */
 const setDefaults = ({ pins: dataPins, lng, lat }) => {
   const pins = Array.isArray(dataPins) ? dataPins : [dataPins];
-
+  if (pins.length === 0) return { pins };
+  console.log(pins);
   if (pins.length > 1 && !lng && !lat) {
     return {
       pins,
@@ -12,13 +13,15 @@ const setDefaults = ({ pins: dataPins, lng, lat }) => {
   if (lng && lat) {
     return {
       pins,
-      center: { lng, lat },
+      lng,
+      lat,
     };
   }
 
   return {
     pins,
-    center: { lng: pins[0].lng, lat: pins[0].lat },
+    lng: pins[0].lng,
+    lat: pins[0].lat,
   };
 };
 
@@ -54,9 +57,8 @@ export default dataset => {
     addCenter: (lat, lng) => {
       const newLat = lat || opts.lat;
       const newLng = lng || opts.lng;
-      if (newLat && newLng) {
-        opts.center = new google.maps.LatLng(newLat, newLng);
-      }
+
+      opts.center = new google.maps.LatLng(newLat, newLng);
 
       return object;
     },

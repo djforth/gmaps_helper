@@ -72,7 +72,7 @@ describe('map', () => {
           'addCallback',
           'addCenter',
           'addConfig',
-          'addlazyload',
+          // 'addlazyload',
           'addLibraries',
           'addType',
           'load',
