@@ -2,7 +2,7 @@
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import replace from 'rollup-plugin-replace';
-import uglify from 'rollup-plugin-uglify';
+import { uglify } from 'rollup-plugin-uglify';
 import commonjs from 'rollup-plugin-commonjs';
 
 export default {
@@ -10,15 +10,13 @@ export default {
 
   plugins: [
     resolve({
+      mainFields: ['jsnext:main', 'main'],
       browser: true,
       extensions: ['.js'],
     }),
     commonjs(),
     babel({
       exclude: 'node_modules/**', // only transpile our source code
-      // , externalHelpers: true
-      plugins: ['external-helpers'],
-      // , runtimeHelpers: true
     }),
     replace({
       ENVIRONMENT: JSON.stringify(process.env.NODE_ENV),
@@ -30,6 +28,9 @@ export default {
     file: 'index.js',
     format: 'umd',
     name: 'GoogleMapHelper',
+    globals: {
+      'lodash/partial': 'partial',
+    },
     sourcemap: true,
   },
 };

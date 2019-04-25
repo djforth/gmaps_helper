@@ -5,7 +5,7 @@ import markerCreator from './markers';
 
 function makeMarker(createMarker, closer) {
   return function(mk) {
-    let marker = createMarker(mk);
+    const marker = createMarker(mk);
     closer.addMarkers(marker);
     return marker;
   };
@@ -19,7 +19,7 @@ function creator(markers, create) {
 }
 
 const centerMap = (map, markers) => LatLngBounds => {
-  let bounds = new LatLngBounds();
+  const bounds = new LatLngBounds();
   markers.forEach(mk => {
     bounds.extend(mk.marker.getPosition());
   });
@@ -43,10 +43,11 @@ export default el => {
   if (!el) return null;
   return (Map, options) => {
     // Should tweak this - not side effect free
+    console.log('options', options.getAll());
     map = new Map(el, options.getAll());
 
-    let closer = closeInfo(map);
-    let create = makeMarker(markerCreator(map, closer), closer);
+    const closer = closeInfo(map);
+    const create = makeMarker(markerCreator(map, closer), closer);
 
     markers = creator(options.get('pins'), create);
 
@@ -54,7 +55,7 @@ export default el => {
       centerMap: centerMap(map, markers),
       getMap: () => map,
       setPosition: LatLng => {
-        let pos = LatLng({ lat: options.get('lat'), lng: options.get('lng') });
+        const pos = LatLng({ lat: options.get('lat'), lng: options.get('lng') });
         map.setCenter(pos);
       },
       setZoom: setZoom(map, options.get('zoom')),

@@ -25,7 +25,7 @@
     "^.+\\.js$": "babel-jest"
   },
   "setupFiles": ["<rootDir>/__tests__/setup.js"],
-  "setupTestFrameworkScriptFile": "@djforth/jest-matchers",
+  "setupFilesAfterEnv": ["@djforth/jest-matchers"],
   "testPathIgnorePatterns": [
     "<rootDir>/__tests__/setup.js",
     "<rootDir>/__tests__/__helpers__",

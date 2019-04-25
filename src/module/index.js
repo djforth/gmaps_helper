@@ -34,7 +34,7 @@ const findMap = maps => id => {
  * @return {object} of functions to build path
  */
 export default key => {
-  let lazyload = false;
+  const lazyload = false;
 
   const mapEls = [...document.querySelectorAll('[data-map]')];
   if (mapEls.length === 0) return;

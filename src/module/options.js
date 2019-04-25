@@ -47,7 +47,7 @@ export default dataset => {
     ...setDefaults(data),
   };
 
-  let object = {
+  const object = {
     addType: type => {
       const newType = type || opts.type;
       opts.mapTypeId = google.maps.MapTypeId[newType];
