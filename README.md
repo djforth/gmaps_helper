@@ -1,7 +1,8 @@
 ## @djforth/gmaps_helper
+
 # Google Maps Helper
 
-A small utility that helps build google maps.  Vanilla JS with lodash/core dependency.
+A small utility that helps build google maps. Vanilla JS with lodash/core dependency.
 
 ## Install
 
@@ -34,45 +35,46 @@ The constructor is passed id of the div you wish to apply the map. Also the goog
 You can also update the googlemaps config like so (see https://developers.google.com/maps/documentation/javascript/3.exp/reference#MapOptions)
 
 ```javascript
-  const map = Maps('[gmaps key goes here]')
-            .addConfig('google-map-id', configObj)
-            .setBounds()
-            .setZoom(10)
-            .load()
+const map = Maps("[gmaps key goes here]")
+  .addConfig("google-map-id", configObj)
+  .setBounds()
+  .setZoom(10)
+  .load();
 ```
 
 Add center (id of map, latitude, longitude)
+
 ```javascript
-  const map = Maps('[gmaps key goes here]')
-            .addCenter('google-map-id', 50.722273, -1.873244)
-            .load()
+const map = Maps("[gmaps key goes here]")
+  .addCenter("google-map-id", 50.722273, -1.873244)
+  .load();
 ```
 
 Add Map type (https://developers.google.com/maps/documentation/javascript/3.exp/reference#MapTypeId)
 
 ```javascript
-  const map = Maps('[gmaps key goes here]')
-            .addType('google-map-id', 'HYBRID')
-            .load()
+const map = Maps("[gmaps key goes here]")
+  .addType("google-map-id", "HYBRID")
+  .load();
 ```
 
 Add Plugins (https://developers.google.com/maps/documentation/javascript/libraries)
 
 ```javascript
-  var map = Maps('[gmaps key goes here]')
-            .addLibraries('google-map-id', 'geometry')
-            .load()
+var map = Maps("[gmaps key goes here]")
+  .addLibraries("google-map-id", "geometry")
+  .load();
 ```
 
 Add callback returns google map object:
 
 ```javascript
-  var map = Maps('[gmaps key goes here]')
-            .addCallback(function(maps /* Array of maps [{map, options}]*/){
-              // do something with maps...
-            })
+var map = Maps("[gmaps key goes here]").addCallback(function(
+  maps /* Array of maps [{map, options}]*/
+) {
+  // do something with maps...
+});
 ```
-
 
 # Bug reports
 
@@ -88,17 +90,17 @@ Please make sure any additional code should be covered in tests (Jasmine using k
 
 If you need to run the test please use:
 
-``` bash
+```bash
 
-npm test
+yarn test
 
 ```
 
 or to rebuild the JS run:
 
-``` bash
+```bash
 
-npm run build
+yarn build
 
 ```
 
@@ -109,10 +111,3 @@ Adrian Stainforth (https://github.com/djforth)
 # License
 
 gmaps_helper is an open source project falling under the MIT License. By using, distributing, or contributing to this project, you accept and agree that all code within the gmaps_helper project are licensed under MIT license.
-
-
-
-
-
-
-
