@@ -111,3 +111,5 @@ Adrian Stainforth (https://github.com/djforth)
 # License
 
 gmaps_helper is an open source project falling under the MIT License. By using, distributing, or contributing to this project, you accept and agree that all code within the gmaps_helper project are licensed under MIT license.
+
+foo
