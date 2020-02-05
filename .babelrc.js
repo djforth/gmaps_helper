@@ -16,12 +16,6 @@ const getPlugins = ({ env }) => {
         async: false,
       },
     ],
-    [
-      '@babel/plugin-proposal-class-properties',
-      {
-        loose: true,
-      },
-    ],
   ];
 
   const testPlugins = [
